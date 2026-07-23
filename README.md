@@ -4,12 +4,19 @@ Java Swing으로 만든 2D 플랫폼 어드벤처 팀 프로젝트입니다. 캐
 
 ![Seal Breakers 실행 화면](docs/images/seal-breakers-launcher.png)
 
-## 본인 기여
+## 주요 기능
+
+- 캐릭터 선택 후 진행하는 2D 플랫폼 스테이지
+- 회원가입·로그인과 MySQL 기반 사용자 관리
+- DB 연결 없이 바로 체험할 수 있는 게스트 모드
+- 이미지 분할·맵 오브젝트 편집 등 게임 제작 보조 도구
+
+## 담당 기능
 
 - 회원가입·로그인 UI와 MySQL 연동
 - 캐릭터 선택 화면
 - 게임 클리어 화면
-- 포트폴리오 시연용 zero-config launcher와 guest mode
+- DB 없이 실행할 수 있는 게스트 모드와 통합 런처
 - DB 자격증명 환경변수화, Gradle 실행·패키지 구조와 CI
 
 > 기존 `Engine`의 animation workflow, image slicer, map/object editor는 김기웅 및 다른 팀원의 기여입니다. 프로젝트 전체 기능과 본인 기여를 구분해 표기합니다.
@@ -43,7 +50,7 @@ GAME_DB_PASSWORD
 ./gradlew distZip
 ```
 
-실행 ZIP은 `build/distributions`에 생성되며 실행 라이브러리와 image asset을 포함합니다. 포트폴리오에서는 별도 웹 배포 대신 위 실행 화면 스크린샷과 이 ZIP을 함께 제공합니다.
+실행 ZIP은 `build/distributions`에 생성되며 실행 라이브러리와 image asset을 포함합니다.
 
 ## Asset
 
