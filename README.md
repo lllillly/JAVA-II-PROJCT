@@ -2,7 +2,15 @@
 
 Java Swing으로 만든 2D 플랫폼 어드벤처 팀 프로젝트입니다. 캐릭터를 선택해 스테이지를 탐험하고 봉인된 마법석을 해제하는 게임과, 제작에 사용한 그래픽 도구를 함께 담고 있습니다.
 
-![Seal Breakers 실행 화면](docs/images/seal-breakers-launcher.png)
+## 구동 화면
+
+### 게임 플레이
+
+![Seal Breakers 게임 플레이 화면](docs/images/seal-breakers-gameplay.png)
+
+### 시작 화면
+
+![Seal Breakers 시작 화면](docs/images/seal-breakers-launcher.png)
 
 ## 주요 기능
 
