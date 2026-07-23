@@ -2,13 +2,15 @@
 
 Java Swing으로 만든 2D 플랫폼 어드벤처 팀 프로젝트입니다. 캐릭터를 선택해 스테이지를 탐험하고 봉인된 마법석을 해제하는 게임과, 제작에 사용한 그래픽 도구를 함께 담고 있습니다.
 
+![Seal Breakers 실행 화면](docs/images/seal-breakers-launcher.png)
+
 ## 본인 기여
 
 - 회원가입·로그인 UI와 MySQL 연동
 - 캐릭터 선택 화면
 - 게임 클리어 화면
 - 포트폴리오 시연용 zero-config launcher와 guest mode
-- DB 자격증명 환경변수화, Gradle 실행·배포 구조와 CI
+- DB 자격증명 환경변수화, Gradle 실행·패키지 구조와 CI
 
 > 기존 `Engine`의 animation workflow, image slicer, map/object editor는 김기웅 및 다른 팀원의 기여입니다. 프로젝트 전체 기능과 본인 기여를 구분해 표기합니다.
 
@@ -34,18 +36,18 @@ GAME_DB_PASSWORD
 
 예시는 `config.example`에서 확인할 수 있습니다. 실제 값은 Git에 commit하지 않습니다.
 
-## 테스트와 배포 패키지
+## 테스트와 실행 패키지
 
 ```bash
 ./gradlew test
 ./gradlew distZip
 ```
 
-배포 ZIP은 `build/distributions`에 생성되며 실행 라이브러리와 image asset을 포함합니다. GitHub Release에는 이 ZIP과 짧은 플레이 영상을 함께 첨부하는 방식을 권장합니다.
+실행 ZIP은 `build/distributions`에 생성되며 실행 라이브러리와 image asset을 포함합니다. 포트폴리오에서는 별도 웹 배포 대신 위 실행 화면 스크린샷과 이 ZIP을 함께 제공합니다.
 
 ## Asset
 
-외부 sprite·tile asset의 라이선스 파일은 각 image 하위 폴더에 포함되어 있습니다. 배포 전 사용 조건을 다시 확인합니다.
+외부 sprite·tile asset의 라이선스 파일은 각 image 하위 폴더에 포함되어 있습니다. 공개 전 사용 조건을 다시 확인합니다.
 
 ## 보안
 
