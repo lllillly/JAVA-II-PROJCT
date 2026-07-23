@@ -10,19 +10,21 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class Launcher {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Animation WorkFlow");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel inputPanel = new JPanel(new GridLayout(3, 2));
+        JPanel inputPanel = new JPanel(new GridLayout(5, 2, 8, 8));
+        inputPanel.setBorder(new EmptyBorder(16, 16, 16, 16));
 
-        JTextField idlePathTextField = new JTextField("image\\Player\\1 Pink_Monster\\Pink_Monster_Idle\\Pink_Monster_idle_",30);
-        JTextField walkPathTextField = new JTextField("image\\Player\\1 Pink_Monster\\Pink_Monster_Walk_6\\Pink_Monster_Walk_",30);
-        JTextField attackPathTextField = new JTextField("image\\Player\\1 Pink_Monster\\Pink_Monster_Attack2_6\\Pink_Monster_Attack2_",30);
-        JTextField climbPathTextField = new JTextField("image\\Player\\1 Pink_Monster\\Pink_Monster_Climb_4\\Pink_Monster_Climb_",30);
-        JTextField jumpPathTextField = new JTextField("image\\Player\\1 Pink_Monster\\Pink_Monster_Jump_8\\Pink_Monster_Jump_",30);
+        JTextField idlePathTextField = new JTextField("image/Player/1 Pink_Monster/Pink_Monster_Idle/Pink_Monster_idle_", 30);
+        JTextField walkPathTextField = new JTextField("image/Player/1 Pink_Monster/Pink_Monster_Walk_6/Pink_Monster_Walk_", 30);
+        JTextField attackPathTextField = new JTextField("image/Player/1 Pink_Monster/Pink_Monster_Attack2_6/Pink_Monster_Attack2_", 30);
+        JTextField climbPathTextField = new JTextField("image/Player/1 Pink_Monster/Pink_Monster_Climb_4/Pink_Monster_Climb_", 30);
+        JTextField jumpPathTextField = new JTextField("image/Player/1 Pink_Monster/Pink_Monster_Jump_8/Pink_Monster_Jump_", 30);
 
         JLabel idleLabel = new JLabel("Idle Path:");
         JLabel walkLabel = new JLabel("Walk Path:");
@@ -56,7 +58,8 @@ public class Launcher {
                 JFrame characterFrame = new JFrame("Character Animation");
                 characterFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 characterFrame.add(character);
-                characterFrame.setSize(200, 100);
+                characterFrame.setSize(240, 140);
+                characterFrame.setLocationRelativeTo(frame);
                 characterFrame.setVisible(true);
             }
         });
@@ -64,7 +67,8 @@ public class Launcher {
         frame.add(inputPanel, BorderLayout.CENTER);
         frame.add(startButton, BorderLayout.SOUTH);
 
-        frame.setSize(400, 300);
+        frame.setSize(760, 320);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }
