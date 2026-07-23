@@ -12,6 +12,10 @@ Java Swing으로 만든 2D 플랫폼 어드벤처 팀 프로젝트입니다. 캐
 
 ![Seal Breakers 로그인 화면](docs/images/seal-breakers-login.png)
 
+### 그래픽 엔진
+
+![Seal Breakers 그래픽 엔진 화면](docs/images/seal-breakers-engine.png)
+
 ## 주요 기능
 
 - 캐릭터 선택 후 진행하는 2D 플랫폼 스테이지
