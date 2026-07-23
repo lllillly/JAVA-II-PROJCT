@@ -81,3 +81,5 @@ Java 17이 필요합니다.
 ```
 
 첫 화면에서 **게스트로 게임 시작**을 선택하면 DB 없이 실행됩니다.
+
+배포용 ZIP은 `./gradlew distZip` 실행 후 `build/distributions/`에 생성됩니다. GitHub Actions의 각 CI 실행에서도 `seal-breakers-커밋SHA` 이름의 동일한 ZIP을 내려받을 수 있습니다.

@@ -18,3 +18,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - run: chmod +x gradlew
       - run: ./gradlew test distZip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seal-breakers-${{ github.sha }}
+          path: build/distributions/*.zip
+          if-no-files-found: error
