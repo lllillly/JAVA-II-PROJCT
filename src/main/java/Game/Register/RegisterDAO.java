@@ -11,10 +11,6 @@ public class RegisterDAO {
 
         try {
             conn = DatabaseUtil.getConnection();
-            if (conn == null) {
-                System.out.println("Failed to connect to the database.");
-                return false;
-            }
 
             String sql = "INSERT INTO USER (Id, Password, NickName) VALUES (?, ?, ?)";
             pstmt = conn.prepareStatement(sql);
@@ -25,7 +21,7 @@ public class RegisterDAO {
             int result = pstmt.executeUpdate();
             return result > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("회원가입 DB를 사용할 수 없습니다: " + e.getMessage());
             return false;
         } finally {
             try {

@@ -17,7 +17,7 @@ public class LoginDAO {
                 return resultSet.next(); // If there is a matching user, return true
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("로그인 DB를 사용할 수 없습니다: " + e.getMessage());
         }
         return false;
     }

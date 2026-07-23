@@ -1,103 +1,54 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.1.5'
-    id 'io.spring.dependency-management' version '1.1.3'
     id 'application'
 }
 
-group = 'com.example.demo'
-version = '0.0.1-SNAPSHOT'
+group = 'com.gameproject'
+version = '1.0.0'
 
 java {
-    sourceCompatibility = '17'
-}
-
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
 application {
-    mainClassName = 'MapEditor.MapPanel'
+    mainClass = 'Game.GameLauncher'
 }
 
 repositories {
     mavenCentral()
 }
 
-
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'commons-io:commons-io:2.11.0'
-    implementation 'com.google.guava:guava:31.1-jre'
-    compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.mysql:mysql-connector-j'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly 'com.mysql:mysql-connector-j:8.2.0'
+
+    testImplementation platform('org.junit:junit-bom:5.10.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
 
-task generateMapFile(type: Copy) {
-    def outputDir = project.file('src/main/resources/map')
-    outputs.dir(outputDir)
-
-    doLast {
-        def content = """
-        private static void saveMap(File selectedFile) {
-            try {
-                PrintWriter writer = new PrintWriter(new FileWriter(selectedFile));
-                for (int y = 0; y < 12; y++) {
-                    for (int x = 0; x < 21; x++) {
-                        writer.print(map[y][x] + " ");
-                    }
-                    writer.println();
-                }
-                writer.close();
-                System.out.println("Map saved successfully.");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        private static void loadMap(File file) {
-            try {
-                BufferedReader reader = new BufferedReader(new FileReader(file));
-                for (int y = 0; y < 12; y++) {
-                    String[] values = reader.readLine().trim().split(" ");
-                    for (int x = 0; x < 21; x++) {
-                        map[y][x] = Integer.parseInt(values[x]);
-                        if (map[y][x] != -1) {
-                            buttons[y][x].setIcon(new ImageIcon(palette[currentPage][map[y][x] % PALETTE_SIZE]));
-                        } else {
-                            buttons[y][x].setIcon(null);
-                        }
-                    }
-                }
-                reader.close();
-                System.out.println("Map loaded successfully.");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        """
-
-        file("${outputDir}/MapUtils.java").write(content)
-    }
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
 
-sourceSets {
+tasks.named('run') {
+    workingDir = rootDir
+}
+
+distributions {
     main {
-        resources {
-            srcDirs = ['src/main/resources']
+        contents {
+            from('image') {
+                into 'image'
+            }
+            from('src/main/resources') {
+                into 'src/main/resources'
+            }
         }
     }
 }
-
-assemble.dependsOn generateMapFile
-
-

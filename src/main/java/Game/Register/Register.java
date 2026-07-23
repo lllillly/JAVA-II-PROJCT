@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Register extends JFrame {
     private JTextField idField;
-    private JTextField passField;
+    private JPasswordField passField;
     private JTextField nicknameField;
 
     public Register() {
@@ -32,7 +32,7 @@ public class Register extends JFrame {
         // 아이디 텍스트 필드 추가
         idField = createTextField("아이디", 31);
         // 비밀번호 텍스트 필드 추가
-        passField = createTextField("비밀번호", 31);
+        passField = createPasswordField(31);
         // 닉네임 텍스트 필드 추가
         nicknameField = createTextField("닉네임", 31);
 
@@ -75,9 +75,13 @@ public class Register extends JFrame {
                 // 회원가입 버튼 클릭 시 아이디, 비밀번호, 닉네임을 콘솔에 출력
 
                 String id = idField.getText();
-                String password = passField.getText();
+                String password = new String(passField.getPassword());
                 String nickname = nicknameField.getText();
-                System.out.println("ID: " + id + ", Password: " + password + ", Nickname: " + nickname);
+
+                if (id.isBlank() || password.isBlank() || nickname.isBlank()) {
+                    JOptionPane.showMessageDialog(Register.this, "모든 항목을 입력해 주세요.");
+                    return;
+                }
 
                 // 사용자 정보를 DTO에 저장
                 RegisterDTO user = new RegisterDTO(0, id, password, nickname);
@@ -147,6 +151,16 @@ public class Register extends JFrame {
             }
         });
         return textField;
+    }
+
+    private JPasswordField createPasswordField(int columns) {
+        JPasswordField passwordField = new JPasswordField(columns);
+        passwordField.setPreferredSize(new Dimension(passwordField.getPreferredSize().width, 84));
+        passwordField.setBackground(new Color(26, 28, 48));
+        passwordField.setForeground(Color.WHITE);
+        passwordField.setFont(new Font("Arial", Font.PLAIN, 16));
+        passwordField.setBorder(new EmptyBorder(0, 0, 0, 0));
+        return passwordField;
     }
 
     public static void main(String[] args) {

@@ -1,51 +1,52 @@
-# JAVA-II-Project
+# Seal Breakers
 
-2D 플랫폼 어드벤쳐 게임
+Java Swing으로 만든 2D 플랫폼 어드벤처 팀 프로젝트입니다. 캐릭터를 선택해 스테이지를 탐험하고 봉인된 마법석을 해제하는 게임과, 제작에 사용한 그래픽 도구를 함께 담고 있습니다.
 
-## 🖥️ 프로젝트 소개
-JAVA를 이용하여 만든 2D 플랫폼 어드벤쳐 게임입니다.
-<br>
+## 본인 기여
 
-## 💬 스토리
- 어느 날, 세계의 균형을 유지하던 마법석 3개가 봉인되었다. 이후, 사람들이 이유없이 병에 걸려 죽는 등 기이한 현상들이 일어나기 시작한다. 봉인된 마법석의 봉인을 풀기 위해, 세상을 구하기 위해 직접 나선 2마리의 동물들.
-스테이지마다 다른 봉인 해제 도전 과제를 해결하며, 두 동물의 고유한 능력과 협동을 통해 마법의 봉인을 해제하는 단서를 찾아 세계를 구해야 한다. 과연 동물 용사들은 3개의 봉인을 모두 풀어 세계를 구할 수 있을 것인가.
+- 회원가입·로그인 UI와 MySQL 연동
+- 캐릭터 선택 화면
+- 게임 클리어 화면
+- 포트폴리오 시연용 zero-config launcher와 guest mode
+- DB 자격증명 환경변수화, Gradle 실행·배포 구조와 CI
 
-## 🕰️ 개발 기간
-* 23.09.17일 - 23.00.00일
+> 기존 `Engine`의 animation workflow, image slicer, map/object editor는 김기웅 및 다른 팀원의 기여입니다. 프로젝트 전체 기능과 본인 기여를 구분해 표기합니다.
 
-### 🧑‍🤝‍🧑 맴버구성
- - 김기웅 : FrontEnd
- - 방효진 : DB, README.md
- - 최어진 : BackEnd
+## 실행
 
-### ⚙️ 개발 환경
-- `Java`
-- **IDE** : IntelliJ IDEA
-- **Framework** : Springboot
-- **Database** : MYSQL
+Java 17이 필요합니다.
 
-## 📌 주요 기능
-#### 주요기능 1 - <a href="https://github.com/chaehyuenwoo/SpringBoot-Project-MEGABOX/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(Login)" >상세보기 - WIKI 이동</a>
-- ????
-- ????
-#### 주요 기능 2 - <a href="https://github.com/chaehyuenwoo/SpringBoot-Project-MEGABOX/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(Member)" >상세보기 - WIKI 이동</a>
-- ????
-- ????
-#### 주요 기능 3 - <a href="https://github.com/chaehyuenwoo/SpringBoot-Project-MEGABOX/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(Member)" >상세보기 - WIKI 이동</a>
-- ????
-- ????
+```bash
+./gradlew run
+```
 
-#### 주요 기능 4 - <a href="https://github.com/chaehyuenwoo/SpringBoot-Project-MEGABOX/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(%EC%98%81%ED%99%94-%EC%98%88%EB%A7%A4)" >상세보기 - WIKI 이동</a>
-- ????
-- ????
-- ????
-- ????
-#### 주요 기능 5 - <a href="https://github.com/chaehyuenwoo/SpringBoot-Project-MEGABOX/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(%EB%A9%94%EC%9D%B8-Page)" >상세보기 - WIKI 이동</a>
-- ????
-- ????
-#### 주요 기능 5 - <a href="" >상세보기 - WIKI 이동</a> 
-- ????
+첫 화면에서 **게스트로 게임 시작**을 선택하면 DB 없이 실행됩니다.
 
-#### 관리자
-- ????
-- ????
+## 회원가입·로그인 DB — 선택
+
+실제 DB 기능을 사용할 때만 다음 환경변수를 설정합니다.
+
+```text
+GAME_DB_URL
+GAME_DB_USER
+GAME_DB_PASSWORD
+```
+
+예시는 `config.example`에서 확인할 수 있습니다. 실제 값은 Git에 commit하지 않습니다.
+
+## 테스트와 배포 패키지
+
+```bash
+./gradlew test
+./gradlew distZip
+```
+
+배포 ZIP은 `build/distributions`에 생성되며 실행 라이브러리와 image asset을 포함합니다. GitHub Release에는 이 ZIP과 짧은 플레이 영상을 함께 첨부하는 방식을 권장합니다.
+
+## Asset
+
+외부 sprite·tile asset의 라이선스 파일은 각 image 하위 폴더에 포함되어 있습니다. 배포 전 사용 조건을 다시 확인합니다.
+
+## 보안
+
+과거 Git 이력에 포함된 DB 자격증명은 코드 수정만으로 무효화되지 않습니다. 해당 DB가 아직 존재한다면 공급자에서 비밀번호를 변경하거나 계정을 폐기해야 합니다.

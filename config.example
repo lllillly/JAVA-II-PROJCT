@@ -1,0 +1,5 @@
+# 회원가입·로그인 DB 기능을 사용할 때만 셸 환경변수로 설정합니다.
+# 이 파일에 실제 값을 입력하거나 Git에 commit하지 마세요.
+GAME_DB_URL=jdbc:mysql://localhost:3306/gameproject?useSSL=false
+GAME_DB_USER=game_user
+GAME_DB_PASSWORD=replace-me
